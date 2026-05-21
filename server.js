@@ -9,6 +9,10 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 const URI = process.env.MONGO_URI;
 
+// Using Google servers to help resolve MongoDB Atlas DNS error
+const dns = require('dns');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
+
 
 
 //MIDDLEWARE----------------------------------------------------------------------------------------------------------------------
