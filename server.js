@@ -16,6 +16,25 @@ const URI = process.env.MONGO_URI;
 
 
 
+//Mongo Connection
+async function mongoConnection() {
+    try {
+        await mongoose.connect(URI);
+        app.listen(PORT, () => {
+            console.log('----------CONNECTED TO MONGO----------');
+            console.log(`Server running on http://localhost:${PORT}`);
+        })
+
+    } catch (error) {
+        console.error(error);
+
+    }
+}
+
+
+mongoConnection();
+
+
 
 //ROUTES----------------------------------------------------------------------------------------------------------------------
 app.get('/', (req, res) => {
@@ -25,7 +44,3 @@ app.get('/', (req, res) => {
 
 
 
-//PORT----------------------------------------------------------------------------------------------------------------------
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-})
