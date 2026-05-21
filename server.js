@@ -5,9 +5,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 require('dotenv').config();
 const PORT = process.env.PORT;
+const URI = process.env.MONGO_URI;
 
 
 
