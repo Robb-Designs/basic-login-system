@@ -68,6 +68,29 @@ app.post('/register', async (req, res) => {
     }
 })
 
+app.post('/login', async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const foundUser = await User.findOne({ username });
+        
+
+        if (!foundUser) {
+            return res.status(400).json({ message: 'Username and/or password is incorrect.' });
+        } 
+
+        const isMatch = await bcrypt.compare(password, foundUser.password);
+
+        if(isMatch){
+            //generate jwt
+        } else {
+            return res.status(400).json({ message: 'Username and/or password is incorrect.' });
+        }
+
+    } catch (error) {
+        //clg error
+    }
+})
+
 
 
 
